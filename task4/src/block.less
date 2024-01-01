@@ -24,6 +24,12 @@
     text-align: start;
   }
 
+  &__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   &__input-description{
     margin: 20px;
     border-radius: 15px;
@@ -40,6 +46,10 @@
     width: 150px;
     background-color: #2e68cf;
     color: white;
+  }
+
+  &__inactive-button{
+    display: none;
   }
 }
 
@@ -88,5 +98,27 @@
 
   &__description{
     margin: 5px;
+  }
+
+  &__edit-button{
+    border-radius: 20px;
+    padding: 10px;
+    align-self: center;
+    width: 100px;
+    background-color: #1e9500;
+    color: white;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  &__delete-button{
+    border-radius: 20px;
+    padding: 10px;
+    align-self: center;
+    width: 100px;
+    background-color: #a5052a;
+    color: white;
+    font-size: 11px;
+    text-align: center;
   }
 }

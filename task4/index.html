@@ -17,16 +17,18 @@
   <body>
     <header class="header">
       <p class="header__text">Егор Зубов 6409</p>
-      <button class="header__button" type="button">Засетапить начальные значения</button>
+      <button id="setup-cards" class="header__button" type="button">Засетапить начальные значения</button>
     </header>
     <div class="block">
       <form id="input-form" class="form">
-        <input class="form__input-text" name="name" type="text" placeholder="Название" required></input>
-        <input class="form__input-text" name="link" type="text" placeholder="Ссылка на изображение" required></input>
-        <textarea class="form__input-description" name="description" cols="40" rows="5" placeholder="Описание"></textarea>
-        <input class="form__input-text" name="code" type="code" placeholder="Код товара" required></input>
-        <input class="form__input-text" name="provider" type="provider" placeholder="Поставщик" required></input>
-        <button class="form__create-button" type="button" id="create-card">Создать</button>
+        <input id="input-name" class="form__input-text" name="name" type="text" placeholder="Название" required></input>
+        <input id="input-link" class="form__input-text" name="link" type="text" placeholder="Ссылка на изображение" required></input>
+        <textarea id="input-desc" class="form__input-description" name="description" cols="40" rows="5" placeholder="Описание"></textarea>
+        <input id="input-code" class="form__input-text" name="code" type="code" placeholder="Код товара" required></input>
+        <input id="input-provider" class="form__input-text" name="provider" type="provider" placeholder="Поставщик" required></input>
+        <div class="form__row">
+          <button class="form__create-button" type="button" id="create-card">Создать</button>
+        </div>
       </form>
       <div class="form-card">
         <div class="form-card__list_item">
