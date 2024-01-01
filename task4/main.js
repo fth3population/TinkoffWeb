@@ -190,6 +190,7 @@ function deleteCard(){
 }
 
 function getFormData(form) {
+    validateForm();
     const data = Array.from((new FormData(form)).entries());
     const card = new Card();
     for(let i = 0; i < data.length; ++i){
@@ -197,6 +198,73 @@ function getFormData(form) {
         card[`${key}`] = value;
     }
     return card;
+}
+
+function validateForm(){
+
+    function removeError(input){
+        const parent = input.parentNode;
+        if(parent.classList.contains('form__error')){
+            parent.querySelector('.form__error-label').remove();
+            parent.classList.remove('error');
+        }
+    }
+
+    function createError(input, text){
+        const parent = input.parentNode;
+        const errorLabel = document.createElement('label');
+        errorLabel.classList.add('form__error-label');
+        errorLabel.textContent = text;
+        parent.classList.add('form__error');
+
+        input.classList.add('form__error-border')
+        parent.append(errorLabel);
+    }
+
+    let result = true;
+    const inputs = form.querySelectorAll('input');
+
+    for(const input of inputs){
+
+        removeError(input);
+
+        if(input.dataset.maxLength){
+            if(input.value.length > input.dataset.maxLength){
+                createError(input, 'Поле не заполнено')
+                result = false;
+            }
+        }
+
+        if(input.dataset.required === "true"){
+            if(input.value === ""){
+                createError(input, 'Поле не заполнено')
+                result = false;
+            }
+        }
+    }
+
+    const textAreas = form.querySelectorAll('textarea');
+
+    for(const textArea of textAreas){
+
+        removeError(textArea);
+
+        if(textArea.dataset.maxLength){
+            if(textArea.value.length > textArea.dataset.maxLength){
+                createError(textArea, 'Поле не заполнено')
+                result = false;
+            }
+        }
+
+        if(textArea.dataset.required === "true"){
+            if(textArea.value === ""){
+                createError(textArea, 'Поле не заполнено')
+                result = false;
+            }
+        }
+    }
+
+    return result;
 }
 
 
