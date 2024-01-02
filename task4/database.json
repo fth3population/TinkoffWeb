@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "name": "Апельсин",
+      "link": "https://foodcity.ru/storage/products/October2018/6XZSr6ddCl6cxfo0UchP.jpg",
+      "description": "Description",
+      "code": "35453461111",
+      "provider": "Provider",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Яблоко",
+      "link": "https://cdn.food.ru/unsigned/fit/640/480/ce/0/czM6Ly9tZWRpYS9waWN0dXJlcy8yMDIxMTEyNi8zODdwbnQuanBlZw.jpg",
+      "description": "Description",
+      "code": "1231354",
+      "provider": "Provider"
+    },
+    {
+      "id": 3,
+      "name": "Вишня",
+      "link": "https://foodcity.ru/storage/products/October2018/NTqwdSD2SiXVflQqOfgi.jpg",
+      "description": "Description",
+      "code": "1234123",
+      "provider": "Provider"
+    },
+    {
+      "id": 4,
+      "name": "Гранат",
+      "link": "https://fruktovik-eco.ru/wp-content/uploads/2020/04/granat-indiya.jpg",
+      "description": "Description",
+      "code": "5423653",
+      "provider": "Provider"
+    },
+    {
+      "id": 5,
+      "name": "Дыня",
+      "link": "https://cdn.metro-cc.ru/ru/ru_pim_404971001001_01.png",
+      "description": "Description",
+      "code": "12534563",
+      "provider": "Provider"
+    }
+  ],
+  "user-profile": {
+    "name": "Егор Зубов",
+    "group": 6409
+  }
+}
