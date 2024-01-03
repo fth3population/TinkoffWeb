@@ -7,6 +7,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import StarIcon from '@mui/icons-material/Star';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 
 const MovieCard = () => {
@@ -93,7 +94,12 @@ const MovieCard = () => {
     function getCard(){
             return <Container key={movie.id} fluid className="mt-3" >
                 <Row style={{display: "flex", justifyContent: "space-between"}}>
-                    <Typography>id: {movie.id}</Typography>
+                    <div style={{display: "flex", flexDirection: "row"}}>
+                        <Typography variant="h7" align="center">id: {movie.id}</Typography>
+                        <IconButton onClick={() =>  navigator.clipboard.writeText(param.id)}>
+                            <ContentCopyIcon sx={{color: "black"}} />
+                        </IconButton>
+                    </div>
                     <div>
                         <Link to={`/movies/edit/${movie.id}`} style={{textDecoration: 'none'}}>
                             <Button variant="contained" style={{borderRadius:10}} startIcon={<ModeEditOutlinedIcon/>}>Редактировать</Button>
@@ -156,6 +162,7 @@ const MovieCard = () => {
                 </Row>
                 <Typography className="mt-4" variant="h4">Описание</Typography>
                 <Typography className="mt-4" variant="h7">{movie.plot}</Typography>
+                <Typography className="mt-4" variant="h4">Рейтинг:</Typography>
             </Container>
     }
 
