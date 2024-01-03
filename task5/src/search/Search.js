@@ -3,6 +3,7 @@ import {Col, Container, Form, Image, InputGroup, ListGroup, Row} from "react-boo
 import {Button, Card, Typography} from "@mui/material";
 import {blue} from "@mui/material/colors";
 import Footer from "./Footer";
+import {Link} from "react-router-dom";
 
 const Search = () => {
     let [movies, setMovies] = useState([])
@@ -26,7 +27,8 @@ const Search = () => {
             movies = movies.filter(el => el.title.includes(str))
         }
         return movies.map(({id, title, year, runtime, genres, director, actors, plot, posterUrl}) => {
-            return <ListGroup.Item href={`${id}`} style={{borderRadius: 15, border: '1px solid'}} className="mt-3">
+            return <Link key={id} to={`/movies/${id}`} style={{textDecoration: 'none'}}>
+            <ListGroup.Item key={id} action href={`${id}`} style={{borderRadius: 15, border: '1px solid'}} className="mt-3">
                 <Row>
                     <Typography sx={{fontWeight:500}}>{title}</Typography>
                 </Row>
@@ -34,6 +36,7 @@ const Search = () => {
                     <Typography>{`${year} | ${genres.join(', ')}`}</Typography>
                 </Row>
             </ListGroup.Item>
+            </Link>
         })
     }
 

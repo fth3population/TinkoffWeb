@@ -7,27 +7,26 @@ import {Button, Card} from "@mui/material";
 import React from "react";
 import MovieCard from "./movieCard/MovieCard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CreateCard from "./editCard/CreateCard";
 
 function App() {
   return (
       <BrowserRouter>
           <Header/>
           <Container fluid>
-              <Tab.Container id="list-group-tabs-example" defaultActiveKey="">
-                  <Row>
-                      <Col md={4}>
-                          <Search/>
-                      </Col>
-                      <Col md={8}>
-                          <Routes>
-                              <Route path="/movies/:id" element={<MovieCard/>}/>
-                              <Route path="/movies/add" element={<MovieCard/>}/>
-                              <Route path="/movies/edit" element={<MovieCard/>}/>
-                              <Route path="/" element={<></>}/>
-                          </Routes>
-                      </Col>
-                  </Row>
-              </Tab.Container>
+              <Row>
+                  <Col md={4}>
+                      <Search/>
+                  </Col>
+                  <Col md={8}>
+                      <Routes>
+                          <Route path="/movies/:id" element={<MovieCard/>}/>
+                          <Route path="/movies/add" element={<CreateCard/>}/>
+                          <Route path="/movies/edit/:id" element={<CreateCard/>}/>
+                          <Route path="/" element={<></>}/>
+                      </Routes>
+                  </Col>
+              </Row>
           </Container>
       </BrowserRouter>
   );

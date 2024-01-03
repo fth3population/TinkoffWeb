@@ -54,18 +54,19 @@
       "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg"
     },
     {
-      "id": 3,
       "title": "The Shawshank Redemption",
+      "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "director": "Frank Darabont",
+      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg",
       "year": "1994",
       "runtime": "142",
+      "actors": "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
       "genres": [
         "Crime",
-        "Drama"
+        "Drama",
+        "Music"
       ],
-      "director": "Frank Darabont",
-      "actors": "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-      "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg"
+      "id": 3
     },
     {
       "id": 4,
@@ -2149,6 +2150,22 @@
       "actors": "Ryan Gosling, Rudy Eisenzopf, Casey Groves, Charlie Talbert",
       "plot": "Four denizens in the world of high-finance predict the credit and housing bubble collapse of the mid-2000s, and decide to take on the big banks for their greed and lack of foresight.",
       "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BNDc4MThhN2EtZjMzNC00ZDJmLThiZTgtNThlY2UxZWMzNjdkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg"
+    },
+    {
+      "title": "dasd",
+      "plot": "asdasd",
+      "director": "dasd",
+      "posterUrl": "asdas",
+      "year": "asda",
+      "runtime": "sdsada",
+      "actors": "dasdad",
+      "genres": [
+        "Fantasy",
+        "Drama",
+        "Adventure",
+        "Crime"
+      ],
+      "id": 147
     }
   ]
 }
