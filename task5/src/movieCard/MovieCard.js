@@ -1,14 +1,19 @@
-import {Button, Card, CardHeader, CardMedia, Typography} from "@mui/material";
+import {Button, Card, CardHeader, CardMedia, IconButton, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {Col, Container, Image, ListGroup, Row, Tab} from "react-bootstrap";
 import {AddCircleOutlineOutlined} from "@mui/icons-material";
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarIcon from '@mui/icons-material/Star';
 
 
 const MovieCard = () => {
 
     const param = useParams();
+    const navigate = useNavigate();
+    const [favorite, setFavorite] = useState();
     const [movie, setMovie] = useState(
         {
             id: 0,
@@ -23,10 +28,12 @@ const MovieCard = () => {
         })
 
     useEffect(() => {
-
         fetchMovie()
             .then(data => setMovie(data))
             .catch(err => alert(err));
+        fetсhFavorites()
+            .then(data => setFavorite(data.id === param.id ? true: false))
+            .catch(err => alert(err))
     }, [param.id])
 
     async function fetchMovie(){
@@ -41,18 +48,73 @@ const MovieCard = () => {
         return data;
     }
 
+    async function fetсhFavorites(){
+        let data = [];
+        try{
+            data = await fetch(`http://localhost:3000/favorites/${param.id}`, {
+                method: 'GET',
+            }).then(res => res.json());
+        } catch (e) {
+            alert(e);
+        }
+        return data;
+    }
+
+    async function deleteMovie(){
+        await fetch(`http://localhost:3000/movies/${param.id}`,
+            {
+                method: 'DELETE',
+            });
+        navigate('/');
+    }
+
+    async function addToFavorite(){
+        setFavorite(true);
+        await fetch(
+            'http://localhost:3000/favorites',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({id: param.id})
+            }
+        )
+    }
+
+    async function deleteFromFavorite(){
+        setFavorite(false);
+        await fetch(`http://localhost:3000/favorites/${param.id}`,
+            {
+                method: 'DELETE',
+            });
+    }
+
     function getCard(){
             return <Container key={movie.id} fluid className="mt-3" >
                 <Row style={{display: "flex", justifyContent: "space-between"}}>
                     <Typography>id: {movie.id}</Typography>
-                    <Link to={`/movies/edit/${movie.id}`} style={{textDecoration: 'none'}}>
-                    <Button variant="contained" style={{borderRadius:10}} startIcon={<ModeEditOutlinedIcon/>}>Редактировать</Button>
-                    </Link>
+                    <div>
+                        <Link to={`/movies/edit/${movie.id}`} style={{textDecoration: 'none'}}>
+                            <Button variant="contained" style={{borderRadius:10}} startIcon={<ModeEditOutlinedIcon/>}>Редактировать</Button>
+                        </Link>
+                        <Button color="error" onClick={deleteMovie} className="ml-3" variant="contained" style={{borderRadius:10}} startIcon={<DeleteOutlineIcon/>}>Удалить</Button>
+                    </div>
                 </Row>
                 <Row className="mt-5" style={{justifyContent: "space-around"}}>
-                    <Image src={movie.posterUrl}></Image>
+                    <Image width="300px" src={movie.posterUrl}></Image>
                     <Col>
-                        <Typography className="ml-3" variant="h4">{movie.title}</Typography>
+                        <div style={{display: "flex", flexDirection: "row"}}>
+                            <Typography className="ml-3" variant="h4">{movie.title}</Typography>
+                            {favorite === true ?
+                                <IconButton onClick={deleteFromFavorite}>
+                                    <StarIcon sx={{color: "orange"}} />
+                                </IconButton> :
+                                <IconButton onClick={addToFavorite}>
+                                    <StarOutlineIcon sx={{color: "orange"}} />
+                                </IconButton>
+                            }
+                        </div>
                         <Typography className="ml-3" variant="h8">{movie.director}</Typography>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                             <div className="mt-3 ml-3" style={{display: "flex", flexDirection: "column", minWidth: "15vw"}}>
